@@ -49,67 +49,97 @@ def isEmpty(data: List) -> bool:
 
 
 def addAtIndex(data: List, index: int, value: int) -> List:
-    if index < 0:
-        raise ValueError("Index msut be non-negative.")
-    elif index == 0:
-        return [value] + data
-    elif index >= len(data):
-        return data + [value]
+    def helper(v:Node, index: int, value: int, i):
+        if (i + 1) == index:
+            new_node = (value, v.next)
+            v.next = new_node
+            return data
+        elif i > index:
+            raise IndexError("D:")
+        else:
+            return helper(v.next, index, i + 1, value)
+        
+    if data.first is None:
+        data.first = Node(value, None)
+        return data
+    elif index < 0 or index >= len(data):
+        raise IndexError("D:")
     else:
-        return [data[0]] + addAtIndex(data[1:], index - 1, value)
+        return helper(data.first, index, value, i = 0)
     raise NotImplementedError("List.addAtIndex() not defined")
 
 
 
 
-def removeAtIndex(head: Node, index: int) -> tuple[Node, List]:
-    if index < 0:
-        raise ValueError("Index must be non-negative.")
-    elif index == 0:
-        return head.next, [head.data] if head is not None else []
-    elif head is None:
-        raise ValueError("Index out of bounds.")
+def removeAtIndex(data: Node, index: int) -> tuple[Node, List]:
+    def helper(v: Node, index: int, i: int):
+        if (i + 1) == index:
+            target: Node = v.next
+            v.next = target.next
+            return target, data
+        elif i > index:
+            raise IndexError("D:")
+        else:
+            return helper(v.next, index, i + 1)
+        
+    if isEmpty(data):
+        return None
+    elif index < 0 or index >= len(data):
+        raise IndexError("D:")
     else:
-        new_head, removed_data = removeAtIndex(head.next, index - 1)
-        head.next = new_head
-        return head, removed_data
-    
+        return helper(data.first, index, i = 0) 
     raise NotImplementedError("List.removeAtIndex() not defined")
 
 
 def addToFront(data: List, value: int) -> List:
-    if not data:
-        return [value]
+    if data.first is None:
+        new_node = (value, None)
+        data.first = new_node
+        return data
     else:
-        return [value] + addToFront(data, value)
+        new_node = Node(value, data.first)
+        data.first = new_node
+        return data
     raise NotImplementedError("List.addToFront() not defined")
 
 
 def addToBack(data: List, value: int) -> List:
-    if not data:
-        return [value]
+    def helper(v: Node, value: int):
+        if v.next is None:
+            new_node = Node(value, None)
+            v.next = new_node
+            return data
+        else:
+            return helper(v.next, value)
+    
+    if data.first is None:
+        new_node = Node(value, None)
+        data.first = new_node
+        return data
     else:
-        return [data[0]] + addToBack(data[1:], value)
+        return helper(data.first, value)
     raise NotImplementedError("List.addToBack() not defined")
 
 
 def getElementAtIndex(data: List, index: int) -> Node:
-    if index < 0:
-        raise ValueError("Index must be non-negative.")
-    elif index == 0:
-        if list.head is None:
-            raise ValueError("Index out of bounds.")
-        return list.head
-    elif list.head is None:
-        raise ValueError("Index out of bounds.")
+    def helper(v: Node, index: int, i: int):
+        if i == index:
+            return v
+        elif i > index:
+            raise IndexError("D:")
+        else:
+            return helper(v.next, index, i + 1)
+        
+    if isEmpty(data):
+        return None
+    elif index < 0 or index >= len(data):
+        raise IndexError("D:")
     else:
-        return getElementAtIndex(list.head.next, index - 1)
+        return helper(data.first, index, i = 0)
     raise NotImplementedError("List.getElementAtIndex() not defined")
 
 
 def clear(data: List) -> List:
-    if not data:
-        return []
-    else:
-        return clear(data[1:])
+    data.first = None
+    return data
     raise NotImplementedError("List.clear() not defined")

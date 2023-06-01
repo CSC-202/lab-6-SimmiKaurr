@@ -314,14 +314,40 @@ for experiment in RESULTS:
 
 # YOUR CODE GOES BELOW
 ## LIST
+plt.subplot(1, 3, 1)
+plt.xlabel('List')
+plt.xticks([])
+plt.yticks([])
+plt.bar(x = 0, height = RESULTS['back (r)'], color = 'blue', label = 'back (r)')
+plt.bar(x = 0, height = RESULTS['back (i)'], width = 0.5, color = 'green', label = 'back (i)')
+plt.bar(x = 1, height = RESULTS['front (r)'], color = 'orange', label = 'front (r)')
+plt.bar(x = 1, height = RESULTS['front (i)'], width = 0.5, color = 'red', label = 'front (i)')
+plt.legend()
 
 
 ## STACK
-
+plt.subplot(1, 3, 2)
+plt.xlabel('Stack')
+plt.xticks([])
+plt.yticks([])
+plt.bar(x = 0, height = RESULTS['push (r)'], color = 'blue', label = 'push (r)')
+plt.bar(x = 0, height = RESULTS['push (i)'], width = 0.5, color = 'green', label = 'push (i)')
+plt.bar(x = 1, height = RESULTS['pop (r)'], color = 'orange', label = 'pop (r)')
+plt.bar(x = 1, height = RESULTS['pop (i)'], width = 0.5, color = 'red', label = 'pop (i)')
+plt.legend()
 
 ## QUEUE
+plt.subplot(1, 3, 3)
+plt.xlabel('Queue')
+plt.xticks([])
+plt.yticks([])
+plt.bar(x = 0, height = RESULTS['deq (r)'], color = 'blue', label = 'deq (r)')
+plt.bar(x = 0, height = RESULTS['deq (i)'], width = 0.5, color = 'green', label = 'deq (i)')
+plt.bar(x = 1, height = RESULTS['enq (r)'], color = 'orange', label = 'enq (r)')
+plt.bar(x = 1, height = RESULTS['enq (i)'], width = 0.5, color = 'red', label = 'enq (i)')
+plt.legend()
 
 
 ## SAVE FIGURE
-plt.savefig('./figs/stapleton_lab6_analysis.png')
+plt.savefig('./figs/kaur_lab6_analysis.png')
 plt.show()
