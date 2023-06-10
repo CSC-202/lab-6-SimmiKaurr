@@ -16,7 +16,7 @@ import c_iterative_queue as Queue_iter
 import c_recursive_queue as Queue_rec
 
 # PLOT CONFIG
-plt.suptitle('Stapleton - Lab 6 Analysis')
+plt.suptitle('Kaur - Lab 6 Analysis')
 
 # CONSTANTS
 N_TRIALS = 100  # TODO run on 20 trials
@@ -319,8 +319,8 @@ plt.xlabel('List')
 plt.xticks([])
 plt.yticks([])
 plt.bar(x = 0, height = RESULTS['back  (r)'], color = 'blue', label = 'back  (r)')
+plt.bar(x = 1, height = RESULTS['front (i)'], color = 'orange', label = 'front (r)')
 plt.bar(x = 0, height = RESULTS['back  (i)'], width = 0.5, color = 'green', label = 'back  (i)')
-plt.bar(x = 1, height = RESULTS['front (i)'], color = 'orange', label = 'front (i)')
 plt.bar(x = 1, height = RESULTS['front (r)'], width = 0.5, color = 'red', label = 'front (i)')
 plt.legend()
 
@@ -331,8 +331,8 @@ plt.xlabel('Stack')
 plt.xticks([])
 plt.yticks([])
 plt.bar(x = 0, height = RESULTS['push  (r)'], color = 'blue', label = 'push  (r)')
-plt.bar(x = 0, height = RESULTS['push  (i)'], width = 0.5, color = 'green', label = 'push  (i)')
 plt.bar(x = 1, height = RESULTS['pop   (r)'], color = 'orange', label = 'pop   (r)')
+plt.bar(x = 0, height = RESULTS['push  (i)'], width = 0.5, color = 'green', label = 'push  (i)')
 plt.bar(x = 1, height = RESULTS['pop   (i)'], width = 0.5, color = 'red', label = 'pop   (i)')
 plt.legend()
 
@@ -342,9 +342,9 @@ plt.xlabel('Queue')
 plt.xticks([])
 plt.yticks([])
 plt.bar(x = 0, height = RESULTS['deq   (r)'], color = 'blue', label = 'deq   (r)')
+plt.bar(x = 1, height = RESULTS['enq   (r)'], color = 'orange', label = 'enq   (i)')
 plt.bar(x = 0, height = RESULTS['deq   (i)'], width = 0.5, color = 'green', label = 'deq   (i)')
-plt.bar(x = 1, height = RESULTS['enq   (r)'], color = 'orange', label = 'enq   (r)')
-plt.bar(x = 1, height = RESULTS['enq   (i)'], width = 0.5, color = 'red', label = 'enq   (i)')
+plt.bar(x = 1, height = RESULTS['enq   (i)'], width = 0.5, color = 'red', label = 'enq   (r)')
 plt.legend()
 
 
